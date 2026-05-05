@@ -57,23 +57,23 @@ button { cursor: pointer; font-family: var(--font-body); border: none; backgroun
 .nav.scrolled {
   background: rgba(26, 58, 42, 1);
 }
-.nav-inner {
-  display: flex;
+nav .nav-inner {
+  display: flex !important;
   align-items: center;
   justify-content: space-between;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
+  flex-direction: row !important;
 }
 .nav-logo {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
 }
 .nav-logo-mark {
   width: 42px;
-  height: 42px;
+  height: 60px;
   background: var(--wood-mid);
   border-radius: 6px;
   display: flex;
@@ -89,6 +89,13 @@ button { cursor: pointer; font-family: var(--font-body); border: none; backgroun
 .nav-logo-text {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+}
+.nav-logo-img {
+  height: 110px;
+  width: auto;
+  display: block;
+  object-fit: contain;
 }
 .nav-logo-name {
   font-family: var(--font-display);
@@ -106,10 +113,11 @@ button { cursor: pointer; font-family: var(--font-body); border: none; backgroun
   line-height: 1;
   margin-top: 2px;
 }
-.nav-links {
-  display: flex;
+nav .nav-links {
+  display: flex !important;
   align-items: center;
   gap: 0.25rem;
+  flex-direction: row !important;
 }
 .nav-links a {
   color: rgba(255,255,255,0.82);
@@ -1094,7 +1102,7 @@ footer {
   color: var(--text);
 }
 .service-feature::before {
-  content: '✓';
+  content: '';
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1124,8 +1132,9 @@ footer {
 @media (max-width: 768px) {
   :root { --nav-height: 64px; }
   .section { padding: 3.5rem 0; }
-  .nav-links { display: none; }
+  nav .nav-links { display: none !important; }
   .hamburger { display: flex; }
+  .nav-logo-img { height:110px; }
   .services-grid { grid-template-columns: 1fr; }
   .stats-row { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
   .footer-grid { grid-template-columns: 1fr; gap: 2rem; }

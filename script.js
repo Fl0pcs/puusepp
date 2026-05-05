@@ -2,7 +2,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  // ─── NAVIGATION ────────────────────────────────────────────────
+  //  NAVIGATION 
   const nav = document.querySelector('.nav');
   const hamburger = document.querySelector('.hamburger');
   const mobileMenu = document.querySelector('.mobile-menu');
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // ─── FADE-IN ON SCROLL ─────────────────────────────────────────
+  //  FADE-IN ON SCROLL 
   const fadeEls = document.querySelectorAll('.fade-in');
 
   if (fadeEls.length) {
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
     fadeEls.forEach(el => observer.observe(el));
   }
 
-  // ─── STAT COUNTER ANIMATION ────────────────────────────────────
+  //  STAT COUNTER ANIMATION 
   const statEls = document.querySelectorAll('.stat-num[data-count]');
 
   if (statEls.length) {
@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, step);
   }
 
-  // ─── CONTACT FORM ──────────────────────────────────────────────
+  //  CONTACT FORM 
   const form = document.getElementById('contactForm');
   const successMsg = document.querySelector('.form-success');
 
@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ─── SMOOTH SCROLL FOR ANCHOR LINKS ───────────────────────────
+  //  SMOOTH SCROLL FOR ANCHOR LINKS 
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', (e) => {
       const target = document.querySelector(anchor.getAttribute('href'));
@@ -151,13 +151,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ─── GALLERY LIGHTBOX (simple) ─────────────────────────────────
+  //  GALLERY LIGHTBOX (simple) 
   const galleryItems = document.querySelectorAll('.gallery-item');
   if (galleryItems.length) {
     galleryItems.forEach(item => {
       item.addEventListener('click', () => {
         const label = item.querySelector('.gallery-item-label')?.textContent || 'Galerii';
-        const emoji = item.querySelector('.gallery-item-placeholder')?.textContent?.trim()?.charAt(0) || '🪵';
+        const emoji = item.querySelector('.gallery-item-placeholder')?.textContent?.trim()?.charAt(0) || '';
 
         const overlay = document.createElement('div');
         overlay.style.cssText = `
@@ -181,7 +181,7 @@ document.addEventListener('DOMContentLoaded', () => {
             margin-top:1.5rem;padding:0.6rem 1.5rem;background:var(--green-mid);
             color:white;border:none;border-radius:30px;cursor:pointer;
             font-family:'DM Sans',sans-serif;font-size:0.9rem;font-weight:600;
-          ">Sulge ✕</button>
+          ">Sulge </button>
         `;
         overlay.dataset.overlay = '1';
         overlay.appendChild(inner);
