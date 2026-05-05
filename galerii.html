@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Galerii — PUUSEPP 369</title>
+  <meta name="description" content="Vaata PUUSEPP 369 tehtud töid — terrassid, saunad, karkassmajad, fassaadid ja katused." />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <style>
+    .filter-bar {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+    .filter-btn {
+      padding: 0.5rem 1.1rem;
+      border-radius: 30px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      border: 1.5px solid rgba(26,58,42,0.2);
+      color: var(--green-mid);
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      font-family: var(--font-body);
+    }
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--green-mid);
+      color: var(--white);
+      border-color: var(--green-mid);
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+    .gallery-item[data-hidden="true"] {
+      display: none;
+    }
+    @media (max-width: 768px) {
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-item:nth-child(5) { grid-column: span 1; }
+    }
+    @media (max-width: 480px) {
+      .gallery-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav" aria-label="Peamine navigatsioon">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="PUUSEPP 369 — avaleht">
+        <div class="nav-logo-mark">P3</div>
+        <div class="nav-logo-text">
+          <span class="nav-logo-name">PUUSEPP 369</span>
+          <span class="nav-logo-sub">Puitehituse rätseplahendused</span>
+        </div>
+      </a>
+      <ul class="nav-links" role="list">
+        <li><a href="index.html">Avaleht</a></li>
+        <li><a href="teenused.html">Teenused</a></li>
+        <li><a href="meist.html">Meist</a></li>
+        <li><a href="galerii.html" class="active">Galerii</a></li>
+        <li><a href="kontakt.html" class="nav-cta">Küsi pakkumist</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Menüü" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" role="navigation">
+    <a href="index.html">Avaleht</a>
+    <a href="teenused.html">Teenused</a>
+    <a href="meist.html">Meist</a>
+    <a href="galerii.html">Galerii</a>
+    <a href="kontakt.html">Küsi pakkumist</a>
+  </div>
+
+  <main>
+    <div class="page-hero">
+      <div class="container">
+        <p class="section-label light">Meie tööd</p>
+        <h1>Galerii</h1>
+        <p>Pilk meie teostatud projektidele — iga töö on ainulaadne.</p>
+        <div class="breadcrumb">
+          <a href="index.html">Avaleht</a>
+          <span>›</span>
+          <span>Galerii</span>
+        </div>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="container">
+        <div class="filter-bar" role="toolbar" aria-label="Filtreeri kategooria järgi">
+          <button class="filter-btn active" data-filter="all">Kõik</button>
+          <button class="filter-btn" data-filter="terrassid">Terrassid</button>
+          <button class="filter-btn" data-filter="karkassmajad">Karkassmajad</button>
+          <button class="filter-btn" data-filter="varikatused">Varikatused</button>
+          <button class="filter-btn" data-filter="saunad">Saunad</button>
+          <button class="filter-btn" data-filter="fassaadid">Fassaadid</button>
+          <button class="filter-btn" data-filter="katused">Katused</button>
+        </div>
+
+        <div class="gallery-grid" id="galleryGrid">
+          <div class="gallery-item fade-in" data-category="terrassid">
+            <div class="gallery-item-placeholder">
+              🌿
+              <span class="gallery-item-label">Terrass Kuressaares</span>
+            </div>
+            <div class="gallery-overlay"><div class="gallery-overlay-icon">🔍</div></div>
+          </div>
+          <div class="gallery-item fade-in fade-in-delay-1" data-category="saunad">
+            <div class="gallery-item-placeholder">
+              🔥
+              <span class="gallery-item-label">Saun Saaremaal</span>
+            </div>
+            <div class="gallery-overlay"><div class="gallery-overlay-icon">🔍</div></div>
+          </div>
+          <div class="gallery-item fade-in fade-in-delay-2" data-category="karkassmajad">
+            <div class="gallery-item-placeholder">
+              🏠
+              <span class="gallery-item-label">Karkassmaja</span>
+            </div>
+            <div class="gallery-overlay"><div class="gallery-overlay-icon">🔍</div></div>
+          </div>
+          <div class="gallery-item fade-in" data-category="fassaadid">
+            <div class="gallery-item-placeholder">
+              🌲
+              <span class="gallery-item-label">Puitfassaad</span>
+            </div>
+            <div class="gallery-overlay"><div class="gallery-overlay-icon">🔍</div></div>
+          </div>
+          <div class="gallery-item fade-in fade-in-delay-1" data-category="varikatused" style="grid-column: span 2;">
+            <div class="gallery-item-placeholder">
+              🌂
+              <span class="gallery-item-label">Varikatus — suur carport</span>
+            </div>
+            <div class="gallery-overlay"><div class="gallery-overlay-icon">🔍</div></div>
+          </div>
+          <div class="gallery-item fade-in fade-in-delay-2" data-category="katused">
+            <div class="gallery-item-placeholder">
+              🏔️
+              <span class="gallery-item-label">Katusetöö</span>
+            </div>
+            <div class="gallery-overlay"><div class="gallery-overlay-icon">🔍</div></div>
+          </div>
+          <div class="gallery-item fade-in" data-category="terrassid">
+            <div class="gallery-item-placeholder">
+              🪵
+              <span class="gallery-item-label">WPC terrass</span>
+            </div>
+            <div class="gallery-overlay"><div class="gallery-overlay-icon">🔍</div></div>
+          </div>
+          <div class="gallery-item fade-in fade-in-delay-1" data-category="saunad">
+            <div class="gallery-item-placeholder">
+              ♨️
+              <span class="gallery-item-label">Suitsusaun</span>
+            </div>
+            <div class="gallery-overlay"><div class="gallery-overlay-icon">🔍</div></div>
+          </div>
+          <div class="gallery-item fade-in fade-in-delay-2" data-category="fassaadid">
+            <div class="gallery-item-placeholder">
+              🏢
+              <span class="gallery-item-label">Vertikaalne laud</span>
+            </div>
+            <div class="gallery-overlay"><div class="gallery-overlay-icon">🔍</div></div>
+          </div>
+          <div class="gallery-item fade-in" data-category="karkassmajad">
+            <div class="gallery-item-placeholder">
+              🏡
+              <span class="gallery-item-label">Suvemaja</span>
+            </div>
+            <div class="gallery-overlay"><div class="gallery-overlay-icon">🔍</div></div>
+          </div>
+          <div class="gallery-item fade-in fade-in-delay-1" data-category="katused">
+            <div class="gallery-item-placeholder">
+              🏚️
+              <span class="gallery-item-label">Bituumensindel</span>
+            </div>
+            <div class="gallery-overlay"><div class="gallery-overlay-icon">🔍</div></div>
+          </div>
+          <div class="gallery-item fade-in fade-in-delay-2" data-category="varikatused">
+            <div class="gallery-item-placeholder">
+              🛖
+              <span class="gallery-item-label">Terrasi katuseääs</span>
+            </div>
+            <div class="gallery-overlay"><div class="gallery-overlay-icon">🔍</div></div>
+          </div>
+        </div>
+
+        <div style="text-align:center;margin-top:3rem;" class="fade-in">
+          <p style="color:var(--gray-mid);margin-bottom:1.5rem;font-size:0.95rem;">
+            Soovid oma unistuste projekti näha galeriis?
+          </p>
+          <a href="kontakt.html" class="btn btn-primary">Alusta projekti →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>PUUSEPP 369</h3>
+          <p>Puitehituse rätseplahendused</p>
+          <p class="footer-desc">Ehitame looduslikust puidust kvaliteetseid ja vastupidavaid lahendusi, mis sobivad täpselt Sinu vajadustega.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Leheküljed</h4>
+          <ul>
+            <li><a href="index.html">Avaleht</a></li>
+            <li><a href="teenused.html">Teenused</a></li>
+            <li><a href="meist.html">Meist</a></li>
+            <li><a href="galerii.html">Galerii</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Kontakt</h4>
+          <ul>
+            <li><a href="tel:+3725551234">+372 555 1234</a></li>
+            <li><a href="mailto:info@puusepp369.ee">info@puusepp369.ee</a></li>
+            <li>Kuressaare, Saaremaa</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 PUUSEPP 369. Kõik õigused kaitstud.</span>
+        <span>Ehitatud armastusega Saaremaal 🌲</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Gallery filter
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.dataset.filter;
+        galleryItems.forEach(item => {
+          const cat = item.dataset.category;
+          if (filter === 'all' || cat === filter) {
+            item.removeAttribute('data-hidden');
+            item.style.display = '';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+
+        // Fix span on large item when filtering
+        const spanItem = document.querySelector('.gallery-item[data-category="varikatused"]');
+        if (spanItem && !spanItem.style.display) {
+          spanItem.style.gridColumn = (filter === 'all' || filter === 'varikatused') ? 'span 2' : '';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
