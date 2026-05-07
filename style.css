@@ -578,12 +578,20 @@ nav .nav-links {
   justify-content: center;
   font-size: 5rem;
 }
-.why-badge {
-  position: absolute;
-  bottom: 1.5rem;
-  right: 1.5rem;
+.why-badge{
+  position:absolute;
+  bottom:24px;
+  right:24px;
 }
 
+.credit-badge{
+  width:90px;
+  max-width:90px;
+  height:auto;
+  display:block;
+  border-radius:14px;
+  box-shadow:0 8px 24px rgba(0,0,0,0.18);
+}
 /* ===== STATS ===== */
 .stats-row {
   display: grid;
@@ -1115,6 +1123,7 @@ footer {
   font-weight: 700;
   flex-shrink: 0;
 }
+
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 1024px) {
