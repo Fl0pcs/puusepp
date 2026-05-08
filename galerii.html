@@ -331,29 +331,6 @@
 
   <script src="script.js"></script>
 
-  <script>
-    const filterBtns = document.querySelectorAll(".filter-btn");
-    const galleryItems = document.querySelectorAll(".gallery-item");
-
-    filterBtns.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        filterBtns.forEach((b) => b.classList.remove("active"));
-        btn.classList.add("active");
-
-        const filter = btn.dataset.filter;
-
-        galleryItems.forEach((item) => {
-          const category = item.dataset.category;
-
-          if (filter === "all" || category === filter) {
-            item.removeAttribute("data-hidden");
-          } else {
-            item.setAttribute("data-hidden", "true");
-          }
-        });
-      });
-    });
-  </script>
 
 </body>
 </html>
