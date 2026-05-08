@@ -130,4 +130,50 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   });
+  // STATS COUNTER ANIMATION
+const statNumbers = document.querySelectorAll('.stat-number');
+
+const statsObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+
+    if (entry.isIntersecting) {
+
+      const el = entry.target;
+
+      const finalText = el.textContent.trim();
+
+      const finalNumber = parseInt(finalText.replace(/\D/g, ''));
+      const suffix = finalText.replace(/[0-9]/g, '');
+
+      let current = 0;
+
+      const duration = 1800;
+      const stepTime = 16;
+      const steps = duration / stepTime;
+      const increment = finalNumber / steps;
+
+      const counter = setInterval(() => {
+
+        current += increment;
+
+        if (current >= finalNumber) {
+          current = finalNumber;
+          clearInterval(counter);
+        }
+
+        el.textContent = Math.floor(current) + suffix;
+
+      }, stepTime);
+
+      statsObserver.unobserve(el);
+    }
+
+  });
+}, {
+  threshold: 0.4
+});
+
+statNumbers.forEach(stat => {
+  statsObserver.observe(stat);
+});
 });
