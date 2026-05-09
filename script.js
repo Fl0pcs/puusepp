@@ -53,35 +53,67 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const form = document.getElementById("contactForm");
-  const successMsg = document.querySelector(".form-success");
+const successMsg = document.querySelector(".form-success");
 
-  if (form) {
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
+if (form) {
 
-      const required = form.querySelectorAll("[required]");
-      let valid = true;
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-      required.forEach(field => {
-        if (!field.value.trim()) {
-          valid = false;
-          field.style.borderColor = "#c0392b";
+    const required = form.querySelectorAll("[required]");
+    let valid = true;
+
+    required.forEach(field => {
+      if (!field.value.trim()) {
+        valid = false;
+        field.style.borderColor = "#c0392b";
+      } else {
+        field.style.borderColor = "";
+      }
+    });
+
+    if (!valid) return;
+
+    const btn = form.querySelector("button[type='submit']");
+    btn.disabled = true;
+    btn.textContent = "Saatmine...";
+
+    try {
+
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: {
+          Accept: "application/json"
         }
       });
 
-      if (!valid) return;
+      if (response.ok) {
 
-      form.reset();
+        form.reset();
 
-      if (successMsg) {
-        successMsg.style.display = "flex";
+        if (successMsg) {
+          successMsg.style.display = "flex";
 
-        setTimeout(() => {
-          successMsg.style.display = "none";
-        }, 5000);
+          setTimeout(() => {
+            successMsg.style.display = "none";
+          }, 5000);
+        }
+
+      } else {
+        alert("Midagi läks valesti. Proovi uuesti.");
       }
-    });
-  }
+
+    } catch (error) {
+      alert("Saatmine ebaõnnestus.");
+    }
+
+    btn.disabled = false;
+    btn.textContent = "Saada sõnum";
+
+  });
+
+}
 
   const galleryItems = document.querySelectorAll(".gallery-item");
 
