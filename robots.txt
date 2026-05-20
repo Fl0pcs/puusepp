@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://puusepp369.ee/sitemap.xml
